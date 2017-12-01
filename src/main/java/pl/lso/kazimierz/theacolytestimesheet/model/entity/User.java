@@ -41,6 +41,11 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+    private Set<Points> points = new HashSet<>();
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+    private Set<Schedule> schedules = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -104,5 +109,21 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Set<Points> getPoints() {
+        return points;
+    }
+
+    public void setPoints(Set<Points> points) {
+        this.points = points;
+    }
+
+    public Set<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
     }
 }
