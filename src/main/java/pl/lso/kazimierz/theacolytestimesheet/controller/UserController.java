@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.lso.kazimierz.theacolytestimesheet.model.builder.UserDtoBuilder;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.NewUser;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 import pl.lso.kazimierz.theacolytestimesheet.service.UserService;
 
 import java.util.HashMap;
@@ -38,8 +39,14 @@ public class UserController {
 
     @PostMapping({"", "/"})
     public ResponseEntity addNewUser(@RequestBody @Validated NewUser newUser) {
-
-        UserDto userDto = UserDtoBuilder.buildFromEntity(userService.addNewUser(newUser));
+        User user = userService.addNewUser(newUser);
+        UserDto userDto = UserDtoBuilder.getInstance()
+                .withId(user.getId())
+                .withName(user.getName())
+                .withUsername(user.getUsername())
+                .withRoles(user.getRoles())
+                .withEmail(user.getEmail())
+                .build();
 
         Map<String, Object> response = new HashMap<>();
         response.put("response", "User has been added");

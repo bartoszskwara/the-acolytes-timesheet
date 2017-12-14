@@ -1,7 +1,5 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.dto;
 
-import java.util.Date;
-
 public class ScheduleDto {
 
     private Long id;

@@ -2,7 +2,6 @@ package pl.lso.kazimierz.theacolytestimesheet.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by Bartosz on 01.12.2017.

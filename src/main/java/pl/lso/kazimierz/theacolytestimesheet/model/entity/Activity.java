@@ -21,7 +21,7 @@ public class Activity {
     private String name;
 
     @Column(nullable = false, name = "value")
-    private String value;
+    private Integer value;
 
     @OneToMany(mappedBy = "activityId", cascade = CascadeType.ALL)
     private Set<Event> events = new HashSet<>();
@@ -45,11 +45,11 @@ public class Activity {
         this.name = name;
     }
 
-    public String getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 

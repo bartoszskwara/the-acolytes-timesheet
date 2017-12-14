@@ -1,7 +1,6 @@
-package pl.lso.kazimierz.theacolytestimesheet.model.dto;
+package pl.lso.kazimierz.theacolytestimesheet.model.dto.points;
 
 import java.util.Date;
-import java.util.Set;
 
 public class PointsDto {
 
