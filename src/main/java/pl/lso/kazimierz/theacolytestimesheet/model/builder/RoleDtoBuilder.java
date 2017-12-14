@@ -1,7 +1,7 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.builder;
 
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.RoleDto;
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.UserDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Role;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 

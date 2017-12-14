@@ -8,4 +8,8 @@ import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     Page<User> findAll(Pageable pageable);
+
+    User findOneByEmail(String email);
+
+    User findOneByUsername(String username);
 }

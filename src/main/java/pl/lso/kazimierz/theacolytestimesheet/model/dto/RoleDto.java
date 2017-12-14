@@ -1,9 +1,6 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.dto;
 
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.Points;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.Role;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.Schedule;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 
 import java.util.Set;
 
