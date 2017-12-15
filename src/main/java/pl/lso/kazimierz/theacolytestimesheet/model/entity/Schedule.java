@@ -15,11 +15,13 @@ public class Schedule {
     @Column(nullable = false, name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "user_id")
-    private Long userId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(nullable = false, name = "event_id")
-    private Long eventId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "event_id", nullable = false)
+    private Event event;
 
     public Long getId() {
         return id;
@@ -29,19 +31,19 @@ public class Schedule {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getEventId() {
-        return eventId;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }

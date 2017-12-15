@@ -1,25 +1,22 @@
-package pl.lso.kazimierz.theacolytestimesheet.model.builder;
+package pl.lso.kazimierz.theacolytestimesheet.model.builder.dto;
 
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.RoleDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.place.PlaceDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.Activity;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Event;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.Role;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.Place;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 public class EventDtoBuilder {
 
     private Long id;
-    private Long placeId;
-    private Long activityId;
+    private PlaceDto place;
+    private ActivityDto activity;
     private Date date;
 
     public EventDtoBuilder() {
-
     }
 
     public static EventDtoBuilder getInstance() {
@@ -30,12 +27,12 @@ public class EventDtoBuilder {
         this.id = id;
         return this;
     }
-    public EventDtoBuilder withPlaceId(Long placeId) {
-        this.placeId = placeId;
+    public EventDtoBuilder withPlace(Place place) {
+        this.place = PlaceDtoBuilder.buildFromEntity(place);
         return this;
     }
-    public EventDtoBuilder withActivityId(Long activityId) {
-        this.activityId = activityId;
+    public EventDtoBuilder withActivity(Activity activity) {
+        this.activity = ActivityDtoBuilder.buildFromEntity(activity);
         return this;
     }
     public EventDtoBuilder withDate(Date date) {
@@ -46,8 +43,8 @@ public class EventDtoBuilder {
     public static EventDto buildFromEntity(Event event) {
         return EventDtoBuilder.getInstance()
                 .withId(event.getId())
-                .withActivityId(event.getActivityId())
-                .withPlaceId(event.getPlaceId())
+                .withActivity(event.getActivity())
+                .withPlace(event.getPlace())
                 .withDate(event.getDate())
                 .build();
     }
@@ -55,8 +52,8 @@ public class EventDtoBuilder {
     public EventDto build() {
         EventDto eventDto = new EventDto(
                 this.id,
-                this.placeId,
-                this.activityId,
+                this.place,
+                this.activity,
                 this.date);
         return eventDto;
     }

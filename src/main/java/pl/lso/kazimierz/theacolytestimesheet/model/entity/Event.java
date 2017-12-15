@@ -18,17 +18,19 @@ public class Event {
     @Column(nullable = false, name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "place_id")
-    private Long placeId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "place_id", nullable = false)
+    private Place place;
 
-    @Column(nullable = false, name = "activity_id")
-    private Long activityId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "activity_id", nullable = false)
+    private Activity activity;
 
     @Column(nullable = false, name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    @OneToMany(mappedBy = "eventId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private Set<Schedule> schedules = new HashSet<>();
 
     public Long getId() {
@@ -39,20 +41,20 @@ public class Event {
         this.id = id;
     }
 
-    public Long getPlaceId() {
-        return placeId;
+    public Place getPlace() {
+        return place;
     }
 
-    public void setPlaceId(Long placeId) {
-        this.placeId = placeId;
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
-    public Long getActivityId() {
-        return activityId;
+    public Activity getActivity() {
+        return activity;
     }
 
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public Date getDate() {

@@ -1,4 +1,4 @@
-package pl.lso.kazimierz.theacolytestimesheet.model.dto;
+package pl.lso.kazimierz.theacolytestimesheet.model.dto.role;
 
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 

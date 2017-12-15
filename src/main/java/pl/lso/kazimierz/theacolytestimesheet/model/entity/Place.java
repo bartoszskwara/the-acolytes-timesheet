@@ -24,7 +24,7 @@ public class Place {
     @Column(nullable = false, name = "coordinates")
     private String coordinates;
 
-    @OneToMany(mappedBy = "placeId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "place", cascade = CascadeType.ALL)
     private Set<Event> events = new HashSet<>();
 
     public Long getId() {

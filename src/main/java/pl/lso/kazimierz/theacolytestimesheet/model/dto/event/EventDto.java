@@ -1,17 +1,20 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.dto.event;
 
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.place.PlaceDto;
+
 import java.util.Date;
 
 public class EventDto {
     private Long id;
-    private Long placeId;
-    private Long activityId;
+    private PlaceDto place;
+    private ActivityDto activity;
     private Date date;
 
-    public EventDto(Long id, Long placeId, Long activityId, Date date) {
+    public EventDto(Long id, PlaceDto placeDto, ActivityDto activityDto, Date date) {
         this.id = id;
-        this.placeId = placeId;
-        this.activityId = activityId;
+        this.place = place;
+        this.activity = activity;
         this.date = date;
     }
 
@@ -19,12 +22,12 @@ public class EventDto {
         return id;
     }
 
-    public Long getPlaceId() {
-        return placeId;
+    public PlaceDto getPlace() {
+        return place;
     }
 
-    public Long getActivityId() {
-        return activityId;
+    public ActivityDto getActivity() {
+        return activity;
     }
 
     public Date getDate() {

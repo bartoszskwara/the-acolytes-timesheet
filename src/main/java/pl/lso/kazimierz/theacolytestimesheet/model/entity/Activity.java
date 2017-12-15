@@ -23,10 +23,10 @@ public class Activity {
     @Column(nullable = false, name = "value")
     private Integer value;
 
-    @OneToMany(mappedBy = "activityId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
     private Set<Event> events = new HashSet<>();
 
-    @OneToMany(mappedBy = "activityId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
     private Set<Points> points = new HashSet<>();
 
     public Long getId() {

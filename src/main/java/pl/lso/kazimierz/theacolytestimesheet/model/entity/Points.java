@@ -16,11 +16,13 @@ public class Points {
     @Column(nullable = false, name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "user_id")
-    private Long userId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(nullable = false, name = "activity_id")
-    private Long activityId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "activity_id", nullable = false)
+    private Activity activity;
 
     @Column(nullable = false, name = "received_date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -34,20 +36,20 @@ public class Points {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getActivityId() {
-        return activityId;
+    public Activity getActivity() {
+        return activity;
     }
 
-    public void setActivityId(Long activityId) {
-        this.activityId = activityId;
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public Date getReceivedDate() {

@@ -1,8 +1,8 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.ScheduleDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.points.PointsDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.schedule.ScheduleDto;
 
 import java.util.Set;
 

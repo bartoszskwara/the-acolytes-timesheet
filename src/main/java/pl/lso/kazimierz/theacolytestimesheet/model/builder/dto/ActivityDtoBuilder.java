@@ -1,13 +1,9 @@
-package pl.lso.kazimierz.theacolytestimesheet.model.builder;
+package pl.lso.kazimierz.theacolytestimesheet.model.builder.dto;
 
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.RoleDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Activity;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Event;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.Role;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,9 +1,6 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.dto.points;
 
-import pl.lso.kazimierz.theacolytestimesheet.validator.ValidEmail;
-
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 
 public class NewPoints {

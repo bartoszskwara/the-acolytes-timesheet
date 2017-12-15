@@ -1,15 +1,19 @@
-package pl.lso.kazimierz.theacolytestimesheet.model.builder;
+package pl.lso.kazimierz.theacolytestimesheet.model.builder.dto;
 
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.points.PointsDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.Activity;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Points;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 
 import java.util.Date;
 
 public class PointsDtoBuilder {
 
     private Long id;
-    private Long userId;
-    private Long activityId;
+    private UserDto user;
+    private ActivityDto activity;
     private Date receivedDate;
 
     public PointsDtoBuilder() {
@@ -23,12 +27,12 @@ public class PointsDtoBuilder {
         this.id = id;
         return this;
     }
-    public PointsDtoBuilder withUserId(Long userId) {
-        this.userId = userId;
+    public PointsDtoBuilder withUser(User user) {
+        this.user = UserDtoBuilder.buildFromEntity(user);
         return this;
     }
-    public PointsDtoBuilder withActivityId(Long activityId) {
-        this.activityId = activityId;
+    public PointsDtoBuilder withActivity(Activity activity) {
+        this.activity = ActivityDtoBuilder.buildFromEntity(activity);
         return this;
     }
     public PointsDtoBuilder withReceivedDate(Date receivedDate) {
@@ -39,8 +43,8 @@ public class PointsDtoBuilder {
     public static PointsDto buildFromEntity(Points points) {
         return PointsDtoBuilder.getInstance()
                 .withId(points.getId())
-                .withUserId(points.getUserId())
-                .withActivityId(points.getActivityId())
+                .withUser(points.getUser())
+                .withActivity(points.getActivity())
                 .withReceivedDate(points.getReceivedDate())
                 .build();
     }
@@ -48,8 +52,8 @@ public class PointsDtoBuilder {
     public PointsDto build() {
         PointsDto pointsDto = new PointsDto(
                 this.id,
-                this.userId,
-                this.activityId,
+                this.user,
+                this.activity,
                 this.receivedDate);
         return pointsDto;
     }
