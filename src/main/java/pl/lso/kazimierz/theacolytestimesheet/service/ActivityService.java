@@ -5,14 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.lso.kazimierz.theacolytestimesheet.exception.NotFoundException;
 import pl.lso.kazimierz.theacolytestimesheet.exception.ServerException;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.NewActivity;
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.points.NewPoints;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Activity;
-import pl.lso.kazimierz.theacolytestimesheet.model.entity.Points;
 import pl.lso.kazimierz.theacolytestimesheet.repository.ActivityRepository;
-import pl.lso.kazimierz.theacolytestimesheet.repository.PointsRepository;
-import pl.lso.kazimierz.theacolytestimesheet.repository.UserRepository;
-
-import java.util.Date;
 
 @Service
 public class ActivityService {

@@ -6,14 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import pl.lso.kazimierz.theacolytestimesheet.model.builder.UserDtoBuilder;
+import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.UserDtoBuilder;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.NewUser;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 import pl.lso.kazimierz.theacolytestimesheet.service.UserService;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 @RestController

@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.lso.kazimierz.theacolytestimesheet.model.builder.ActivityDtoBuilder;
-import pl.lso.kazimierz.theacolytestimesheet.model.builder.EventDtoBuilder;
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
-import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.NewActivity;
+import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.EventDtoBuilder;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.NewEvent;
-import pl.lso.kazimierz.theacolytestimesheet.service.ActivityService;
 import pl.lso.kazimierz.theacolytestimesheet.service.EventService;
 
 import java.util.HashMap;
