@@ -4,16 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.PointsDtoBuilder;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.points.NewPoints;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.points.PointsDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.Points;
 import pl.lso.kazimierz.theacolytestimesheet.service.PointsService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,6 +24,19 @@ public class PointsController {
     @Autowired
     public PointsController(PointsService pointsService) {
         this.pointsService = pointsService;
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity getPointsByUserId(@PathVariable("userId") Long userId) {
+        List<Points> points = pointsService.getPointsByUserId(userId);
+        int total = pointsService.getTotalPointsFromList(points);
+        List<PointsDto> pointsDto = pointsService.mapPointsListToPointsDtoList(points);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("total", total);
+        response.put("points", pointsDto);
+
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 
     @PostMapping({"", "/"})

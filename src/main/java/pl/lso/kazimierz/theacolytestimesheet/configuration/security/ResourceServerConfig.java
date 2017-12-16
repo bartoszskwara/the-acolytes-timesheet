@@ -23,8 +23,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
     DefaultTokenServices tokenServices;
+
     @Value("${oauth2security.resource.id}")
     private String resourceId;
+
     @Value("${oauth2security.jwt.secret}")
     private String jwtSecret;
 

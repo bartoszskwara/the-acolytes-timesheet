@@ -26,8 +26,16 @@ public class UserScheduleBuilder {
         this.user = UserDtoBuilder.buildFromEntity(user);
         return this;
     }
+    public UserScheduleBuilder withUser(UserDto user) {
+        this.user = user;
+        return this;
+    }
     public UserScheduleBuilder withEvent(Event event) {
         this.events.add(EventDtoBuilder.buildFromEntity(event));
+        return this;
+    }
+    public UserScheduleBuilder withEvent(EventDto event) {
+        this.events.add(event);
         return this;
     }
     public UserScheduleBuilder withEvents(Set<Event> events) {

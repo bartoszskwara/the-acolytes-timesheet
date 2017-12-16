@@ -31,8 +31,16 @@ public class EventDtoBuilder {
         this.place = PlaceDtoBuilder.buildFromEntity(place);
         return this;
     }
+    public EventDtoBuilder withPlace(PlaceDto place) {
+        this.place = place;
+        return this;
+    }
     public EventDtoBuilder withActivity(Activity activity) {
         this.activity = ActivityDtoBuilder.buildFromEntity(activity);
+        return this;
+    }
+    public EventDtoBuilder withActivity(ActivityDto activity) {
+        this.activity = activity;
         return this;
     }
     public EventDtoBuilder withDate(Date date) {

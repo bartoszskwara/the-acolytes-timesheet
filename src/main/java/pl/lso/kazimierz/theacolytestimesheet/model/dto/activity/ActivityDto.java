@@ -33,4 +33,5 @@ public class ActivityDto {
     public Set<EventDto> getEvents() {
         return events;
     }
+
 }

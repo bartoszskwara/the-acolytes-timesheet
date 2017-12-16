@@ -1,5 +1,6 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.dto.points;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 
@@ -10,6 +11,8 @@ public class PointsDto {
     private Long id;
     private UserDto user;
     private ActivityDto activity;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss Z")
     private Date receivedDate;
 
     public PointsDto(Long id, UserDto user, ActivityDto activity, Date receivedDate) {

@@ -33,4 +33,5 @@ public class PlaceDto {
     public Set<EventDto> getEvents() {
         return events;
     }
+
 }

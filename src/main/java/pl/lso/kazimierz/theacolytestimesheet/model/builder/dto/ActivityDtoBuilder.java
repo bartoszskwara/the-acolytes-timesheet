@@ -40,6 +40,10 @@ public class ActivityDtoBuilder {
         return this;
     }
     public ActivityDtoBuilder withEvents(Set<Event> events) {
+        if(events == null) {
+            this.events = null;
+            return this;
+        }
         HashSet<EventDto> eventSet = new HashSet<>();
         events.forEach(e -> eventSet.add(EventDtoBuilder.getInstance().buildFromEntity(e)));
         this.events = eventSet;

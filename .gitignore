@@ -1,5 +1,6 @@
 target/
 TODO.txt
+frontend/node_modules/
 
 # Compiled class file
 *.class

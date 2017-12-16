@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.lso.kazimierz.theacolytestimesheet.exception.NotFoundException;
 import pl.lso.kazimierz.theacolytestimesheet.exception.ServerException;
-import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.UserScheduleBuilder;
+import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.*;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.place.PlaceDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.schedule.NewSchedule;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.schedule.UserSchedule;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Event;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Schedule;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
@@ -49,9 +53,29 @@ public class ScheduleService {
 
         UserScheduleBuilder userScheduleBuilder = UserScheduleBuilder.getInstance();
         for(Schedule s : schedules) {
-            userScheduleBuilder.withEvent(s.getEvent());
+            ActivityDto activity = ActivityDtoBuilder.getInstance()
+                    .withId(s.getEvent().getActivity().getId())
+                    .withName(s.getEvent().getActivity().getName())
+                    .withValue(s.getEvent().getActivity().getValue())
+                    .build();
+            PlaceDto place = PlaceDtoBuilder.getInstance()
+                    .withId(s.getEvent().getPlace().getId())
+                    .withName(s.getEvent().getPlace().getName())
+                    .withCoordinates(s.getEvent().getPlace().getCoordinates())
+                    .build();
+            EventDto event = EventDtoBuilder.getInstance()
+                    .withId(s.getEvent().getId())
+                    .withActivity(activity)
+                    .withPlace(place)
+                    .withDate(s.getEvent().getDate())
+                    .build();
+            userScheduleBuilder.withEvent(event);
         }
-        userScheduleBuilder.withUser(user);
+        UserDto userDto = UserDtoBuilder.getInstance()
+                .withId(user.getId())
+                .withName(user.getName())
+                .build();
+        userScheduleBuilder.withUser(userDto);
 
         return userScheduleBuilder.build();
     }

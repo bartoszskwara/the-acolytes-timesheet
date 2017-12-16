@@ -31,8 +31,16 @@ public class PointsDtoBuilder {
         this.user = UserDtoBuilder.buildFromEntity(user);
         return this;
     }
+    public PointsDtoBuilder withUser(UserDto user) {
+        this.user = user;
+        return this;
+    }
     public PointsDtoBuilder withActivity(Activity activity) {
         this.activity = ActivityDtoBuilder.buildFromEntity(activity);
+        return this;
+    }
+    public PointsDtoBuilder withActivity(ActivityDto activity) {
+        this.activity = activity;
         return this;
     }
     public PointsDtoBuilder withReceivedDate(Date receivedDate) {
