@@ -1,3 +1,21 @@
-<p>
-  schedule works!
-</p>
+<div class="container">
+  <mat-card>
+    <p>
+      SCHEDULE
+    </p>
+    <ul *ngFor="let schedule of schedules">
+      <li>{{schedule.id}}</li>
+      <li><ul>
+        <li>{{schedule.place.id}}</li>
+        <li>{{schedule.place.name}}</li>
+        <li>{{schedule.place.coordinates}}</li>
+      </ul></li>
+      <li><ul>
+        <li>{{schedule.activity.id}}</li>
+        <li>{{schedule.activity.name}}</li>
+        <li>{{schedule.activity.value}}</li>
+      </ul></li>
+      <li>{{schedule.date}}</li>
+    </ul>
+  </mat-card>
+</div>

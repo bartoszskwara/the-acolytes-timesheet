@@ -7,10 +7,11 @@ export class UserService {
   constructor() { }
 
   getCurrentUser(): User {
-    return {
-      id: 1,
-      name: 'Bartosz Skwara'
-    }
+    let user = new User()
+    user.setId(1);
+    user.setName('Bartosz Skwara');
+    user.setActive(true);
+    return user;
   }
 
 }

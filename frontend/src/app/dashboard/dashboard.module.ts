@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { LayoutComponent } from './layout/layout.component';
@@ -11,11 +12,19 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { NewsComponent } from './news/news.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+import { ScheduleService } from './schedule/schedule.service';
+
+import { CalendarModule } from 'angular-calendar';
+
+// MATERIAL DESIGN
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MatCardModule,
+    HttpModule
   ],
   declarations: [
     DashboardComponent,
@@ -30,7 +39,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     DashboardComponent
   ],
   providers: [
-    UserLoggedGuard
+    UserLoggedGuard,
+    ScheduleService
   ]
 })
 export class DashboardModule { }
