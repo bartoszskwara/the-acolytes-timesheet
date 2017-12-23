@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   loadingAvatar: boolean = false;
   loadingPoints: boolean = false;
   avatar: SafeUrl = null;
-  points: number = 0;
+  points: number = null;
 
   constructor(private userService: UserService,
               private navbarService: NavbarService) { }

@@ -16,8 +16,8 @@ import { ScheduleService } from './schedule/schedule.service';
 import { NewsService } from './news/news.service';
 import { NavbarService } from './navbar/navbar.service';
 
-import { CalendarModule } from 'angular-calendar';
 import { MomentModule } from 'angular2-moment';
+import {CalendarComponent} from "ap-angular2-fullcalendar/src/calendar/calendar";
 
 // MATERIAL DESIGN
 import {MatCardModule} from '@angular/material/card';
@@ -28,6 +28,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { UpcomingEventComponent } from './sidebar-right/upcoming-event/upcoming-event.component';
 
 @NgModule({
   imports: [
@@ -42,17 +43,18 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     BrowserAnimationsModule,
     MatExpansionModule,
     MatButtonToggleModule,
-    CalendarModule.forRoot(),
     MomentModule
   ],
   declarations: [
+    CalendarComponent,
     DashboardComponent,
     LayoutComponent,
     SidebarLeftComponent,
     SidebarRightComponent,
     ScheduleComponent,
     NewsComponent,
-    NavbarComponent
+    NavbarComponent,
+    UpcomingEventComponent
   ],
   exports: [
     DashboardComponent

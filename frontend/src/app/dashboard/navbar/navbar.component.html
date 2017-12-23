@@ -14,11 +14,13 @@
     <div class="logo"></div>
   </div>
   <div class="right">
-    <p class="basic">{{points}}</p>
+    <p class="basic">{{points}}
+      <mat-progress-spinner diameter="40" strokeWidth="4" color="warn" *ngIf="points == null && loadingPoints" mode="indeterminate"></mat-progress-spinner>
+    </p>
     <div class="avatar"
         [style.background-image]="avatar">
 
-        <mat-progress-spinner diameter="40" strokeWidth="4" color="warn" *ngIf="avatar == null && loading" mode="indeterminate"></mat-progress-spinner>
+        <mat-progress-spinner diameter="40" strokeWidth="4" color="warn" *ngIf="avatar == null && loadingAvatar" mode="indeterminate"></mat-progress-spinner>
 
 
     </div>
