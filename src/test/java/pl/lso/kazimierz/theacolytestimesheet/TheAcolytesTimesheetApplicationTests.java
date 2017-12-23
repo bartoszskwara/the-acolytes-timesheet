@@ -31,7 +31,7 @@ public class TheAcolytesTimesheetApplicationTests {
 		EventDto e = EventDtoBuilder.getInstance()
 				.withId(1L)
 				.withPlace(p)
-				.withDate(new Date())
+				.withStartDate(new Date())
 				.build();
 
 		assertThat(p).isNotNull();

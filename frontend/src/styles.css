@@ -1,12 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+@font-face {
+    font-family: "headline-one";
+    src: url('assets/fonts/headline-one.ttf') format("truetype");
+}
+@font-face {
+    font-family: "headline-two";
+    src: url('assets/fonts/headline-two.ttf') format("truetype");
+}
+@font-face {
+    font-family: "franklin";
+    src: url('assets/fonts/franklin.ttf') format("truetype");
+}
 p, body, html {
   padding: 0;
   margin: 0;
 }
 
 body {
-    background: rgb(23, 71, 147, 0.05)
+    background: rgba(23, 71, 147, 0.05);
+    font-family: 'franklin';
 }

@@ -14,7 +14,8 @@ public class EventDtoBuilder {
     private Long id;
     private PlaceDto place;
     private ActivityDto activity;
-    private Date date;
+    private Date startDate;
+    private Date endDate;
 
     public EventDtoBuilder() {
     }
@@ -43,17 +44,21 @@ public class EventDtoBuilder {
         this.activity = activity;
         return this;
     }
-    public EventDtoBuilder withDate(Date date) {
-        this.date = date;
+    public EventDtoBuilder withStartDate(Date date) {
+        this.startDate = date;
         return this;
     }
-
+    public EventDtoBuilder withEndDate(Date date) {
+        this.endDate = date;
+        return this;
+    }
     public static EventDto buildFromEntity(Event event) {
         return EventDtoBuilder.getInstance()
                 .withId(event.getId())
                 .withActivity(event.getActivity())
                 .withPlace(event.getPlace())
-                .withDate(event.getDate())
+                .withStartDate(event.getStartDate())
+                .withEndDate(event.getEndDate())
                 .build();
     }
 
@@ -62,7 +67,8 @@ public class EventDtoBuilder {
                 this.id,
                 this.place,
                 this.activity,
-                this.date);
+                this.startDate,
+                this.endDate);
         return eventDto;
     }
 }

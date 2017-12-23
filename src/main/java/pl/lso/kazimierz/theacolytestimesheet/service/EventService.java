@@ -43,7 +43,7 @@ public class EventService {
             throw new NotFoundException("Place not found");
         }
         List<Event> events = eventRepository.findByPlace_Id(placeId);
-        events.sort(Comparator.comparing(Event::getDate).reversed());
+        events.sort(Comparator.comparing(Event::getStartDate).reversed());
         return events;
     }
 
@@ -67,7 +67,8 @@ public class EventService {
                             .withId(e.getId())
                             .withPlace(place)
                             .withActivity(activity)
-                            .withDate(e.getDate())
+                            .withStartDate(e.getStartDate())
+                            .withEndDate(e.getEndDate())
                             .build();
                 })
                 .collect(Collectors.toList());
@@ -90,7 +91,8 @@ public class EventService {
         Event event = new Event();
         event.setActivity(activity);
         event.setPlace(place);
-        event.setDate(newEvent.getDate());
+        event.setStartDate(newEvent.getStartDate());
+        event.setEndDate(newEvent.getEndDate());
 
         Event saved = eventRepository.save(event);
         if(saved != null) {

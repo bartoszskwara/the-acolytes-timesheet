@@ -1,18 +1,16 @@
 .container {
 
-  margin: 50px;
+  .top {
+    margin: 15px;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  }
 
   .content {
+    margin: 15px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
   }

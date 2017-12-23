@@ -26,9 +26,13 @@ public class Event {
     @JoinColumn(name = "activity_id", nullable = false)
     private Activity activity;
 
-    @Column(nullable = false, name = "date")
+    @Column(nullable = false, name = "start_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    private Date startDate;
+
+    @Column(nullable = false, name = "end_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endDate;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private Set<Schedule> schedules = new HashSet<>();
@@ -57,12 +61,20 @@ public class Event {
         this.activity = activity;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public Set<Schedule> getSchedules() {

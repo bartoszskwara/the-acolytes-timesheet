@@ -13,18 +13,37 @@ import { NewsComponent } from './news/news.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { ScheduleService } from './schedule/schedule.service';
+import { NewsService } from './news/news.service';
+import { NavbarService } from './navbar/navbar.service';
 
 import { CalendarModule } from 'angular-calendar';
+import { MomentModule } from 'angular2-moment';
 
 // MATERIAL DESIGN
-import {MatCardModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    HttpModule,
     MatCardModule,
-    HttpModule
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    CalendarModule.forRoot(),
+    MomentModule
   ],
   declarations: [
     DashboardComponent,
@@ -40,7 +59,9 @@ import {MatCardModule} from '@angular/material';
   ],
   providers: [
     UserLoggedGuard,
-    ScheduleService
+    ScheduleService,
+    NewsService,
+    NavbarService
   ]
 })
 export class DashboardModule { }

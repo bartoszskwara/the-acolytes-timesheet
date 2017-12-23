@@ -25,3 +25,9 @@ oauth2security:
   expiration: 864000000
   jwt:
     secret: acolyteJWTSecret
+
+resource:
+  path: src/main/resources
+  avatar:
+    path: /upload/avatar
+    default: default.png

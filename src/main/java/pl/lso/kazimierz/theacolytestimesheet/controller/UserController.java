@@ -2,7 +2,9 @@ package pl.lso.kazimierz.theacolytestimesheet.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +54,13 @@ public class UserController {
         response.put("user", userDto);
 
         return new ResponseEntity(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/avatar/{userId}")
+    public ResponseEntity<?> getAvatar(@PathVariable("userId") Long userId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        return new ResponseEntity<>(this.userService.getAvatar(userId), headers, HttpStatus.OK);
     }
 
 }

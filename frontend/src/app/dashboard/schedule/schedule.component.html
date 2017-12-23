@@ -1,21 +1,72 @@
 <div class="container">
-  <mat-card>
-    <p>
-      SCHEDULE
-    </p>
-    <ul *ngFor="let schedule of schedules">
-      <li>{{schedule.id}}</li>
-      <li><ul>
-        <li>{{schedule.place.id}}</li>
-        <li>{{schedule.place.name}}</li>
-        <li>{{schedule.place.coordinates}}</li>
-      </ul></li>
-      <li><ul>
-        <li>{{schedule.activity.id}}</li>
-        <li>{{schedule.activity.name}}</li>
-        <li>{{schedule.activity.value}}</li>
-      </ul></li>
-      <li>{{schedule.date}}</li>
-    </ul>
-  </mat-card>
+  <mat-accordion class="schedule-panel">
+    <mat-expansion-panel hideToggle="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Schedule
+        </mat-panel-title>
+        <mat-panel-description>
+          Click here to see your calendar
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="calendar-header">
+        <div class="change-month">
+          <div mwlCalendarPreviousView
+            [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+            <mat-icon>navigate_before</mat-icon>
+          </div>
+          <div mwlCalendarToday
+            [(viewDate)]="viewDate">
+            Today
+          </div>
+          <div mwlCalendarNextView
+            [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+            <mat-icon>navigate_next</mat-icon>
+          </div>
+        </div>
+
+        <mat-button-toggle-group #group="matButtonToggleGroup">
+          <mat-button-toggle value="month" (click)="view = 'month'" [checked]="true">Month</mat-button-toggle>
+          <mat-button-toggle value="week" (click)="view = 'week'">Week</mat-button-toggle>
+          <mat-button-toggle value="day" (click)="view = 'day'">Day</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="month-title">
+        <h2>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h2>
+      </div>
+      <div class="calendar">
+        <div [ngSwitch]="view">
+          <mwl-calendar-month-view
+            *ngSwitchCase="'month'"
+            [viewDate]="viewDate"
+            [events]="schedules"
+            [refresh]="refresh"
+            [activeDayIsOpen]="activeDayIsOpen"
+            (dayClicked)="dayClicked($event.day)"
+            (eventClicked)="handleEvent($event.event)">
+          </mwl-calendar-month-view>
+          <mwl-calendar-week-view
+            *ngSwitchCase="'week'"
+            [viewDate]="viewDate"
+            [events]="schedules"
+            [refresh]="refresh">
+          </mwl-calendar-week-view>
+          <mwl-calendar-day-view
+            *ngSwitchCase="'day'"
+            [viewDate]="viewDate"
+            [events]="schedules"
+            [refresh]="refresh">
+          </mwl-calendar-day-view>
+        </div>
+      </div>
+
+
+    </mat-expansion-panel>
+
+
+
+  </mat-accordion>
+
 </div>

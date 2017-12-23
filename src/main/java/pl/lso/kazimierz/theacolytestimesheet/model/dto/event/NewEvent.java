@@ -11,8 +11,11 @@ public class NewEvent {
     @NotNull(message = "Activity ID cannot be null")
     private Long activityId;
 
-    @NotNull(message = "Date cannot be null")
-    private Date date;
+    @NotNull(message = "Start date cannot be null")
+    private Date startDate;
+
+    @NotNull(message = "End date cannot be null")
+    private Date endDate;
 
     public Long getPlaceId() {
         return placeId;
@@ -30,11 +33,19 @@ public class NewEvent {
         this.activityId = activityId;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

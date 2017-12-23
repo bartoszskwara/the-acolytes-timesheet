@@ -67,7 +67,8 @@ public class ScheduleService {
                     .withId(s.getEvent().getId())
                     .withActivity(activity)
                     .withPlace(place)
-                    .withDate(s.getEvent().getDate())
+                    .withStartDate(s.getEvent().getStartDate())
+                    .withEndDate(s.getEvent().getEndDate())
                     .build();
             userScheduleBuilder.withEvent(event);
         }

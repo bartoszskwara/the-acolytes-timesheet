@@ -1,5 +1,40 @@
 .container {
-//  background: green;
-  padding: 20px;
-  margin: 10px;
+  width: 50%;
+  
+  .schedule-panel .mat-expansion-panel-header-title,
+  .schedule-panel .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+
+  .schedule-panel .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .calendar-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .change-month {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      div {
+        cursor: pointer;
+        margin: 0 3px;
+
+      }
+    }
+  }
+
+  .month-title {
+    text-align: center;
+  }
+
+
 }

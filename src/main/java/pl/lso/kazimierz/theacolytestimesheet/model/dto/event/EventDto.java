@@ -11,14 +11,18 @@ public class EventDto {
     private PlaceDto place;
     private ActivityDto activity;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss Z")
-    private Date date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z")
+    private Date startDate;
 
-    public EventDto(Long id, PlaceDto place, ActivityDto activity, Date date) {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z")
+    private Date endDate;
+
+    public EventDto(Long id, PlaceDto place, ActivityDto activity, Date startDate, Date endDate) {
         this.id = id;
         this.place = place;
         this.activity = activity;
-        this.date = date;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public Long getId() {
@@ -33,8 +37,11 @@ public class EventDto {
         return activity;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getStartDate() {
+        return startDate;
     }
 
+    public Date getEndDate() {
+        return endDate;
+    }
 }
