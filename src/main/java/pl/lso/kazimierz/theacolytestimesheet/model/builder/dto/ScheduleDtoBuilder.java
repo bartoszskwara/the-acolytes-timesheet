@@ -28,8 +28,16 @@ public class ScheduleDtoBuilder {
         this.user = UserDtoBuilder.buildFromEntity(user);
         return this;
     }
+    public ScheduleDtoBuilder withUser(UserDto user) {
+        this.user = user;
+        return this;
+    }
     public ScheduleDtoBuilder withEvent(Event event) {
         this.event = EventDtoBuilder.buildFromEntity(event);
+        return this;
+    }
+    public ScheduleDtoBuilder withEvent(EventDto event) {
+        this.event = event;
         return this;
     }
 

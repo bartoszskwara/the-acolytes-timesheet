@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ScheduleService } from './schedule.service'
 import { UserService } from '../../service/user/user.service'
-import { Schedule } from '../../model/schedule/Schedule'
-
-
-import { Subject } from 'rxjs/Subject';
-
 import * as moment from 'moment';
+import { CalendarComponent } from "ap-angular2-fullcalendar/src/calendar/calendar";
 
 @Component({
   selector: 'schedule',
@@ -16,21 +12,30 @@ import * as moment from 'moment';
 export class ScheduleComponent implements OnInit {
 
   private schedules: Object[] = [];
+  @ViewChild(CalendarComponent) myCalendar: CalendarComponent;
 
-  calendarOptions:Object = {
-        height: 'auto',
+  calendarOptions: any = {
         fixedWeekCount : false,
         defaultDate: new Date(),
         editable: true,
         eventLimit: true,
         events: this.schedules,
-        timeFormat: 'H:mm'
+        timeFormat: 'H:mm',
+        header: {
+          left: '',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay,today listYear prev,next '
+        }
     };
 
   constructor(private scheduleService : ScheduleService,
               private userService : UserService) {}
 
   ngOnInit() {
+
+    console.log('init');
+    console.log(this.myCalendar)
+
     this.getScheduleByUserId(this.userService.getCurrentUser().getId());
   }
 
@@ -43,21 +48,21 @@ export class ScheduleComponent implements OnInit {
             this.schedules.push(
               {
                 title: response.schedule[i].activity.name,
-                start: moment.utc(response.schedule[i].startDate, 'YYYY-MM-DD HH:mm:ss').local().toDate(),
-                end: moment.utc(response.schedule[i].endDate, 'YYYY-MM-DD HH:mm:ss').local().toDate()
+                start: moment.utc(response.schedule[i].startDate, 'YYYY-MM-DD HH:mm:ss Z').local().format('YYYY-MM-DD HH:mm:ss'),
+                end: moment.utc(response.schedule[i].endDate, 'YYYY-MM-DD HH:mm:ss Z').local().format('YYYY-MM-DD HH:mm:ss')
               }
             )
           }
-
-
         },
         error => {
           console.log(error);
           console.log('error');
         },
         () => {
-          console.log('end');
-
+          console.log('end, see schedules: ');
+          console.log(this.schedules);
+          this.calendarOptions.events = this.schedules;
+          this.myCalendar.fullCalendar('renderEvents', this.schedules);
         }
       );
   }

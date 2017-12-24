@@ -9,9 +9,11 @@ import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.place.PlaceDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.schedule.NewSchedule;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.schedule.ScheduleDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.schedule.UserSchedule;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Event;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.Points;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Schedule;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 import pl.lso.kazimierz.theacolytestimesheet.repository.EventRepository;
@@ -19,9 +21,7 @@ import pl.lso.kazimierz.theacolytestimesheet.repository.ScheduleRepository;
 import pl.lso.kazimierz.theacolytestimesheet.repository.UserRepository;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ScheduleService {
@@ -112,5 +112,54 @@ public class ScheduleService {
         }
 
         return result;
+    }
+
+    public ScheduleDto getUpcomingSchedule(Long userId) {
+        if(userId == null) {
+            throw new NotFoundException("User ID not found");
+        }
+        User user = userRepository.findOne(userId);
+        if(user == null) {
+            throw new NotFoundException("User not found");
+        }
+
+        Schedule schedule = scheduleRepository.findTopByEvent_StartDateGreaterThanEqualOrderByEvent_StartDateAsc(new Date());
+        if(schedule != null) {
+            ActivityDto activity = ActivityDtoBuilder.getInstance()
+                    .withId(schedule.getEvent().getActivity().getId())
+                    .withName(schedule.getEvent().getActivity().getName())
+                    .withValue(schedule.getEvent().getActivity().getValue())
+                    .withEvents(null)
+                    .build();
+            PlaceDto place = PlaceDtoBuilder.getInstance()
+                    .withId(schedule.getEvent().getPlace().getId())
+                    .withName(schedule.getEvent().getPlace().getName())
+                    .withCoordinates(schedule.getEvent().getPlace().getCoordinates())
+                    .withEvents(null)
+                    .build();
+            EventDto event = EventDtoBuilder.getInstance()
+                    .withId(schedule.getEvent().getId())
+                    .withStartDate(schedule.getEvent().getStartDate())
+                    .withEndDate(schedule.getEvent().getEndDate())
+                    .withActivity(activity)
+                    .withPlace(place)
+                    .build();
+            UserDto userDto = UserDtoBuilder.getInstance()
+                    .withId(schedule.getUser().getId())
+                    .withName(schedule.getUser().getName())
+                    .withPoints((Set<Points>) null)
+                    .withRoles(null)
+                    .withSchedules(null)
+                    .build();
+
+            return ScheduleDtoBuilder.getInstance()
+                    .withId(schedule.getId())
+                    .withUser(userDto)
+                    .withEvent(event)
+                    .build();
+        }
+        else {
+            return null;
+        }
     }
 }

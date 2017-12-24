@@ -1,5 +1,6 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.builder.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.place.PlaceDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Event;
@@ -8,6 +9,7 @@ import pl.lso.kazimierz.theacolytestimesheet.model.entity.Place;
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaceDtoBuilder {
 
     private Long id;

@@ -1,9 +1,11 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.dto.place;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
 
 import java.util.Set;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlaceDto {
 
     private Long id;

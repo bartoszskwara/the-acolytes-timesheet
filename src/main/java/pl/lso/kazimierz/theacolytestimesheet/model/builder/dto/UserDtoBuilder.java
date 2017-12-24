@@ -69,6 +69,10 @@ public class UserDtoBuilder {
     }
 
     public UserDtoBuilder withRoles(Set<Role> roles) {
+        if(roles == null) {
+            this.roles = null;
+            return this;
+        }
         this.roles = roles.stream().map(role -> role.getName()).collect(Collectors.toSet());
         return this;
     }
@@ -79,6 +83,10 @@ public class UserDtoBuilder {
     }
 
     public UserDtoBuilder withPoints(Set<Points> points) {
+        if(points == null) {
+            this.points = null;
+            return this;
+        }
         HashSet<PointsDto> pointsSet = new HashSet<>();
         points.forEach(p -> {pointsSet.add(PointsDtoBuilder.getInstance().buildFromEntity(p));});
         this.points = pointsSet;
@@ -91,6 +99,10 @@ public class UserDtoBuilder {
     }
 
     public UserDtoBuilder withSchedules(Set<Schedule> schedules) {
+        if(schedules == null) {
+            this.schedules = null;
+            return this;
+        }
         HashSet<ScheduleDto> scheduleSet = new HashSet<>();
         schedules.forEach(s -> {scheduleSet.add(ScheduleDtoBuilder.getInstance().buildFromEntity(s));});
         this.schedules = scheduleSet;

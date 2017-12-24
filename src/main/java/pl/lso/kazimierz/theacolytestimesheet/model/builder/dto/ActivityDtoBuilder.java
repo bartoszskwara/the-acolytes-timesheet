@@ -1,5 +1,6 @@
 package pl.lso.kazimierz.theacolytestimesheet.model.builder.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Activity;
@@ -8,6 +9,7 @@ import pl.lso.kazimierz.theacolytestimesheet.model.entity.Event;
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ActivityDtoBuilder {
 
     private Long id;

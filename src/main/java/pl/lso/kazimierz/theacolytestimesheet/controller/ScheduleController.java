@@ -29,7 +29,7 @@ public class ScheduleController {
 
     @GetMapping("/{userId}")
     public ResponseEntity getScheduleByUserId(@PathVariable("userId") Long userId) {
-        return new ResponseEntity(scheduleService.getScheduleByUserId(userId), HttpStatus.OK);
+        return new ResponseEntity<>(scheduleService.getScheduleByUserId(userId), HttpStatus.OK);
     }
 
     @PostMapping({"", "/"})
@@ -45,7 +45,13 @@ public class ScheduleController {
         response.put("response", "Schedule have been saved");
         response.put("schedule", scheduleDto);
 
-        return new ResponseEntity(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @GetMapping("/upcoming/{userId}")
+    public ResponseEntity getUpcomingEvent(@PathVariable("userId") Long userId) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("upcomingSchedule", this.scheduleService.getUpcomingSchedule(userId));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

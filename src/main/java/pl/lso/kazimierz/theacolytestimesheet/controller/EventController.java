@@ -9,7 +9,9 @@ import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.EventDtoBuilder;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.EventDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.event.NewEvent;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.Event;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.Schedule;
 import pl.lso.kazimierz.theacolytestimesheet.service.EventService;
+import pl.lso.kazimierz.theacolytestimesheet.service.ScheduleService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,19 +32,22 @@ public class EventController {
     public ResponseEntity getEventsByPlaceId(@PathVariable("placeId") Long placeId) {
         List<Event> events = eventService.getEventsByPlaceId(placeId);
         List<EventDto> eventsDto = eventService.mapEventListToEventDtoList(events);
-
-        return new ResponseEntity(eventsDto, HttpStatus.OK);
+        return new ResponseEntity<>(eventsDto, HttpStatus.OK);
     }
 
     @PostMapping({"", "/"})
     public ResponseEntity addEvent(@RequestBody @Validated NewEvent newEvent) {
         EventDto eventDto = EventDtoBuilder.buildFromEntity(eventService.addNewEvent(newEvent));
-
         Map<String, Object> response = new HashMap<>();
         response.put("response", "Event has been created");
         response.put("event", eventDto);
-
-        return new ResponseEntity(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @GetMapping("/upcoming")
+    public ResponseEntity getUpcomingEvent() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("upcomingEvent", this.eventService.getUpcomingEvent());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

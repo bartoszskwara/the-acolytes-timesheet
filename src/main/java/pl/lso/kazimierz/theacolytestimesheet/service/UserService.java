@@ -131,5 +131,4 @@ public class UserService {
             throw new ServerException("Cannot download the avatar");
         }
     }
-
 }

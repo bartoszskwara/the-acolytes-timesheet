@@ -57,10 +57,9 @@ public class UserController {
     }
 
     @GetMapping("/avatar/{userId}")
-    public ResponseEntity<?> getAvatar(@PathVariable("userId") Long userId) {
+    public ResponseEntity getAvatar(@PathVariable("userId") Long userId) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
         return new ResponseEntity<>(this.userService.getAvatar(userId), headers, HttpStatus.OK);
     }
-
 }

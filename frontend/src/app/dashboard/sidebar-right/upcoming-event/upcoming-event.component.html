@@ -1,3 +1,36 @@
-<p>
-  upcoming-event works!
-</p>
+<div class="container">
+
+  <mat-card>
+
+    <div class="header">
+      <h3>UPCOMING EVENT</h3>
+      <div class="event-icon">
+        <mat-icon>event</mat-icon>
+      </div>
+    </div>
+    <div class="content">
+      <mat-list *ngIf="event != null">
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>access_time</mat-icon>
+          <h4 mat-line>{{event.startDate | amParse:'YYYY-MM-DD HH:mm:ss Z' | amDateFormat:'DD.MM.YYYY H:mm'}}</h4>
+
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>bookmark</mat-icon>
+          <h4 mat-line>{{event.activity.name}}</h4>
+          <p mat-line> value: {{event.activity.value}} </p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>place</mat-icon>
+          <h4 mat-line>{{event.place.name}}</h4>
+        </mat-list-item>
+      </mat-list>
+      <mat-progress-spinner diameter="40" strokeWidth="4" color="primary" *ngIf="event == null && loading" mode="indeterminate"></mat-progress-spinner>
+    </div>
+
+
+  </mat-card>
+
+
+</div>
