@@ -62,4 +62,10 @@ public class UserController {
         headers.setContentType(MediaType.IMAGE_JPEG);
         return new ResponseEntity<>(this.userService.getAvatar(userId), headers, HttpStatus.OK);
     }
+
+    @GetMapping("/ranking")
+    public ResponseEntity getUsersRanking(Pageable pageable) {
+        return new ResponseEntity(userService.getUsersRanking(pageable), HttpStatus.OK);
+    }
+
 }

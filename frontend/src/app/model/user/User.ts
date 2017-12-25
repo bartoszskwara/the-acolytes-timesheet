@@ -1,7 +1,10 @@
+import { Points } from '../points/Points';
+
 export class User {
   private id: number;
   private name: string;
   private active: boolean;
+  private points: Points[];
 
   getId(): number {
     return this.id;
@@ -20,5 +23,11 @@ export class User {
   }
   setActive(active: boolean) : void {
     this.active = active;
+  }
+  getPoints(): Points[] {
+    return this.points;
+  }
+  setPoints(points: Points[]) : void {
+    this.points = points;
   }
 }

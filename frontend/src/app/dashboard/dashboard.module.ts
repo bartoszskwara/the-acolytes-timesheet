@@ -12,6 +12,7 @@ import { NewsService } from './news/news.service';
 import { NavbarService } from './navbar/navbar.service';
 import { UpcomingEventService } from './sidebar-right/upcoming-event/upcoming-event.service';
 import { UpcomingScheduleService } from './sidebar-right/upcoming-schedule/upcoming-schedule.service';
+import { RankingService } from './sidebar-left/ranking/ranking.service';
 
 // MATERIAL DESIGN
 import {MatCardModule} from '@angular/material/card';
@@ -33,6 +34,7 @@ import { SidebarLeftComponent } from './sidebar-left/sidebar-left.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarComponent } from "ap-angular2-fullcalendar/src/calendar/calendar";
 import { UpcomingScheduleComponent } from './sidebar-right/upcoming-schedule/upcoming-schedule.component';
+import { RankingComponent } from './sidebar-left/ranking/ranking.component';
 
 @NgModule({
   imports: [
@@ -60,7 +62,8 @@ import { UpcomingScheduleComponent } from './sidebar-right/upcoming-schedule/upc
     NewsComponent,
     NavbarComponent,
     UpcomingEventComponent,
-    UpcomingScheduleComponent
+    UpcomingScheduleComponent,
+    RankingComponent
   ],
   exports: [
     DashboardComponent
@@ -71,7 +74,8 @@ import { UpcomingScheduleComponent } from './sidebar-right/upcoming-schedule/upc
     NewsService,
     NavbarService,
     UpcomingEventService,
-    UpcomingScheduleService
+    UpcomingScheduleService,
+    RankingService
   ]
 })
 export class DashboardModule { }

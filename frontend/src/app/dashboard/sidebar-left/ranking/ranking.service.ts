@@ -7,15 +7,13 @@ import { environment } from "../../../../environments/environment";
 import { Http } from "@angular/http";
 
 @Injectable()
-export class UpcomingEventService {
-
+export class RankingService {
   private serverUrl = `${environment.server.url}`;
 
   constructor(private http: Http) { }
 
-  getUpcomingEvent(): Observable<any> {
-    return this.http.get(this.serverUrl + 'event/upcoming')
+  getRanking(size: number): Observable<any> {
+    return this.http.get(this.serverUrl + 'user/ranking?size=' + size)
       .map(res => res.json());
   }
-
 }

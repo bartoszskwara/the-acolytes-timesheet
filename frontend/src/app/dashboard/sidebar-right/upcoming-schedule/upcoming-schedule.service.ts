@@ -15,7 +15,7 @@ export class UpcomingScheduleService {
 
   getUpcomingSchedule(userId: number): Observable<any> {
     return this.http.get(this.serverUrl + 'schedule/upcoming/' + userId)
-      .map(res => res.json())
+      .map(res => res.json());
   }
 
 }

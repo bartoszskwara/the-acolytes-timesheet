@@ -93,6 +93,11 @@ public class UserDtoBuilder {
         return this;
     }
 
+    public UserDtoBuilder withPointsDto(Set<PointsDto> points) {
+        this.points = points;
+        return this;
+    }
+
     public UserDtoBuilder withSchedule(Schedule schedule) {
         this.schedules.add(ScheduleDtoBuilder.getInstance().buildFromEntity(schedule));
         return this;

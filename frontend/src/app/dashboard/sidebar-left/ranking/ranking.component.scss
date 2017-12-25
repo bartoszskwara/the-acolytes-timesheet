@@ -1,0 +1,58 @@
+.container {
+  mat-card {
+
+    .header {
+      h3 {
+        font-family: 'headline-one';
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      .ranking-icon {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        width: 60px;
+        height: 60px;
+        box-shadow: 0 0 5px 1px #e8e8e8;
+        border-radius: 50%;
+        border: 2px solid white;
+
+        mat-icon {
+          font-size: 40px;
+          height: 40px;
+          width: 40px;
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    a {
+      display: block;
+      text-align: right;
+      color: black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+
+
+
+  }
+}

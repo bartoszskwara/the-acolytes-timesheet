@@ -9,9 +9,14 @@ import org.springframework.stereotype.Service;
 import pl.lso.kazimierz.theacolytestimesheet.exception.ForbiddenException;
 import pl.lso.kazimierz.theacolytestimesheet.exception.NotFoundException;
 import pl.lso.kazimierz.theacolytestimesheet.exception.ServerException;
+import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.ActivityDtoBuilder;
+import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.PointsDtoBuilder;
 import pl.lso.kazimierz.theacolytestimesheet.model.builder.dto.UserDtoBuilder;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.activity.ActivityDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.dto.points.PointsDto;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.NewUser;
 import pl.lso.kazimierz.theacolytestimesheet.model.dto.user.UserDto;
+import pl.lso.kazimierz.theacolytestimesheet.model.entity.Points;
 import pl.lso.kazimierz.theacolytestimesheet.model.entity.User;
 import pl.lso.kazimierz.theacolytestimesheet.repository.UserRepository;
 
@@ -22,7 +27,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 
@@ -131,4 +138,30 @@ public class UserService {
             throw new ServerException("Cannot download the avatar");
         }
     }
+
+    public Page<UserDto> getUsersRanking(Pageable pageable) {
+        return userRepository.findRanking(pageable)
+                .map(u -> {
+                            Set<PointsDto> points = new HashSet<>();
+                            for(Points p : u.getPoints()) {
+                                ActivityDto activityDto = ActivityDtoBuilder.getInstance()
+                                        .withId(p.getActivity().getId())
+                                        .withName(p.getActivity().getName())
+                                        .withValue(p.getActivity().getValue())
+                                        .build();
+                                PointsDto pointsDto = PointsDtoBuilder.getInstance()
+                                        .withId(p.getId())
+                                        .withActivity(activityDto)
+                                        .build();
+                                points.add(pointsDto);
+                            }
+                            return UserDtoBuilder.getInstance()
+                                    .withId(u.getId())
+                                    .withName(u.getName())
+                                    .withPointsDto(points)
+                                    .build();
+                        }
+                );
+    }
+
 }
