@@ -11,7 +11,7 @@ import { Points } from '../../../model/points/Points';
 export class RankingComponent implements OnInit {
 
   private loading: boolean = false;
-  private ranking: User[] = [];
+  private ranking: User[] = null;
   private usersPerPage: number = 3;
   constructor(private rankingService: RankingService) { }
 

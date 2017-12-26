@@ -1,0 +1,17 @@
+<div class="container" *ngIf="events != null && events.length > 0">
+    <mat-card *ngFor="let event of events">
+        <h1 class="mat-headline">{{event.startDate | amParse:'YYYY-MM-DD HH:mm:ss Z' | amDateFormat:'H:mm' }}</h1>
+        <h3 class="mat-caption">{{event.activity.name}}</h3>
+        <button mat-raised-button color="primary">Check in!</button>
+    </mat-card>
+
+</div>
+
+
+<div class="container" *ngIf="events != null && events.length == 0">
+      <p>There are no events in your area in the moment</p>
+</div>
+
+
+
+<mat-progress-spinner diameter="40" strokeWidth="4" color="primary" *ngIf="events == null && loading" mode="indeterminate"></mat-progress-spinner>

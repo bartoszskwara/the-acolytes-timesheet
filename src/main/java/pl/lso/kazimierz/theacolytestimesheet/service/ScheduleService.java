@@ -61,7 +61,7 @@ public class ScheduleService {
             PlaceDto place = PlaceDtoBuilder.getInstance()
                     .withId(s.getEvent().getPlace().getId())
                     .withName(s.getEvent().getPlace().getName())
-                    .withCoordinates(s.getEvent().getPlace().getCoordinates())
+                    .withCoordinates(s.getEvent().getPlace().getLongitude(), s.getEvent().getPlace().getLatitude(), s.getEvent().getPlace().getAltitude())
                     .build();
             EventDto event = EventDtoBuilder.getInstance()
                     .withId(s.getEvent().getId())
@@ -134,7 +134,7 @@ public class ScheduleService {
             PlaceDto place = PlaceDtoBuilder.getInstance()
                     .withId(schedule.getEvent().getPlace().getId())
                     .withName(schedule.getEvent().getPlace().getName())
-                    .withCoordinates(schedule.getEvent().getPlace().getCoordinates())
+                    .withCoordinates(schedule.getEvent().getPlace().getLongitude(), schedule.getEvent().getPlace().getLatitude(), schedule.getEvent().getPlace().getAltitude())
                     .withEvents(null)
                     .build();
             EventDto event = EventDtoBuilder.getInstance()

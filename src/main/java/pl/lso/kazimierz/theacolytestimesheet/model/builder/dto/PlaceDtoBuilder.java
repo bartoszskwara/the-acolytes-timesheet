@@ -14,7 +14,9 @@ public class PlaceDtoBuilder {
 
     private Long id;
     private String name;
-    private String coordinates;
+    private Double longitude;
+    private Double latitude;
+    private Double altitude;
     private Set<EventDto> events;
 
     public PlaceDtoBuilder() {
@@ -33,8 +35,10 @@ public class PlaceDtoBuilder {
         this.name = name;
         return this;
     }
-    public PlaceDtoBuilder withCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public PlaceDtoBuilder withCoordinates(Double longitude, Double latitude, Double altitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.altitude = altitude;
         return this;
     }
     public PlaceDtoBuilder withEvent(Event event) {
@@ -56,7 +60,7 @@ public class PlaceDtoBuilder {
         return PlaceDtoBuilder.getInstance()
                 .withId(place.getId())
                 .withName(place.getName())
-                .withCoordinates(place.getCoordinates())
+                .withCoordinates(place.getLongitude(), place.getLatitude(), place.getAltitude())
                 .withEvents(place.getEvents())
                 .build();
     }
@@ -65,7 +69,9 @@ public class PlaceDtoBuilder {
         PlaceDto placeDto = new PlaceDto(
                 this.id,
                 this.name,
-                this.coordinates,
+                this.longitude,
+                this.latitude,
+                this.altitude,
                 this.events);
         return placeDto;
     }

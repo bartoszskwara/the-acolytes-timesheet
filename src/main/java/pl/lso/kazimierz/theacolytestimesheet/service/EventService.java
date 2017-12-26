@@ -64,7 +64,7 @@ public class EventService {
                     PlaceDto place = PlaceDtoBuilder.getInstance()
                             .withId(e.getPlace().getId())
                             .withName(e.getPlace().getName())
-                            .withCoordinates(e.getPlace().getCoordinates())
+                            .withCoordinates(e.getPlace().getLongitude(), e.getPlace().getLatitude(), e.getPlace().getAltitude())
                             .withEvents(null)
                             .build();
 
@@ -122,7 +122,7 @@ public class EventService {
             PlaceDto place = PlaceDtoBuilder.getInstance()
                     .withId(e.getPlace().getId())
                     .withName(e.getPlace().getName())
-                    .withCoordinates(e.getPlace().getCoordinates())
+                    .withCoordinates(e.getPlace().getLongitude(), e.getPlace().getLatitude(), e.getPlace().getAltitude())
                     .withEvents(null)
                     .build();
 

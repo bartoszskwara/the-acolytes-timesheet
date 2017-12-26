@@ -20,9 +20,14 @@ public class Place {
     @Column(nullable = false, name = "name")
     private String name;
 
-    // TODO: think about format of the coordinates
-    @Column(nullable = false, name = "coordinates")
-    private String coordinates;
+    @Column(nullable = false, name = "longitude")
+    private Double longitude;
+
+    @Column(nullable = false, name = "latitude")
+    private Double latitude;
+
+    @Column(nullable = false, name = "altitude")
+    private Double altitude;
 
     @OneToMany(mappedBy = "place", cascade = CascadeType.ALL)
     private Set<Event> events = new HashSet<>();
@@ -43,12 +48,28 @@ public class Place {
         this.name = name;
     }
 
-    public String getCoordinates() {
-        return coordinates;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public Double getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(Double altitude) {
+        this.altitude = altitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     public Set<Event> getEvents() {

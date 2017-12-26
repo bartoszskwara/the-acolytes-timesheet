@@ -31,3 +31,9 @@ resource:
   avatar:
     path: /upload/avatar
     default: default.png
+
+location:
+  radius:
+    allowed: 500
+  time:
+    allowed: 1800

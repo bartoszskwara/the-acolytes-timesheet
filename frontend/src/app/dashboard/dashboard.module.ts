@@ -13,6 +13,7 @@ import { NavbarService } from './navbar/navbar.service';
 import { UpcomingEventService } from './sidebar-right/upcoming-event/upcoming-event.service';
 import { UpcomingScheduleService } from './sidebar-right/upcoming-schedule/upcoming-schedule.service';
 import { RankingService } from './sidebar-left/ranking/ranking.service';
+import { IAmPresentService } from './i-am-present/i-am-present.service'
 
 // MATERIAL DESIGN
 import {MatCardModule} from '@angular/material/card';
@@ -23,6 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { SidebarRightComponent } from './sidebar-right/sidebar-right.component';
 import { ScheduleComponent } from './schedule/schedule.component';
@@ -35,6 +37,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalendarComponent } from "ap-angular2-fullcalendar/src/calendar/calendar";
 import { UpcomingScheduleComponent } from './sidebar-right/upcoming-schedule/upcoming-schedule.component';
 import { RankingComponent } from './sidebar-left/ranking/ranking.component';
+import { IAmPresentComponent } from './i-am-present/i-am-present.component';
 
 @NgModule({
   imports: [
@@ -50,7 +53,8 @@ import { RankingComponent } from './sidebar-left/ranking/ranking.component';
     MatExpansionModule,
     MatButtonToggleModule,
     MomentModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   declarations: [
     CalendarComponent,
@@ -63,7 +67,11 @@ import { RankingComponent } from './sidebar-left/ranking/ranking.component';
     NavbarComponent,
     UpcomingEventComponent,
     UpcomingScheduleComponent,
-    RankingComponent
+    RankingComponent,
+    IAmPresentComponent
+  ],
+  entryComponents: [
+    IAmPresentComponent
   ],
   exports: [
     DashboardComponent
@@ -75,7 +83,8 @@ import { RankingComponent } from './sidebar-left/ranking/ranking.component';
     NavbarService,
     UpcomingEventService,
     UpcomingScheduleService,
-    RankingService
+    RankingService,
+    IAmPresentService
   ]
 })
 export class DashboardModule { }

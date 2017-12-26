@@ -41,7 +41,7 @@ public class ActivityController {
         response.put("response", "Activity have been created");
         response.put("activity", activityDto);
 
-        return new ResponseEntity(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 }
